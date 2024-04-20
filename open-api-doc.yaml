@@ -1,0 +1,36 @@
+openapi: 3.0.3
+info:
+  title: Image Processing Microservice - OpenAPI 3.0
+  description: |-
+    This is the documentation for my submission for the image processing microservice project
+  contact:
+    email: michael.bd.baumann@bmw.de
+  version: "0.9"
+tags:
+  - name: API
+    description: API Documentation
+paths:
+  /filteredimage:
+    get:
+      tags:
+      - API
+      summary: Get a downsized version for a public image from the web
+      parameters:
+        - in: query
+          name: filteredimage
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+              application/*:
+                schema: 
+                  format: binary
+        '400':
+          description: Parameter(s) missing
+        '404':
+          description: Image not found
+        '422':
+          description: Unable to parse parameter as URL
+
